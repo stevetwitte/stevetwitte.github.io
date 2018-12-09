@@ -1,18 +1,12 @@
 ---
 layout: page
-title: About
+title: about
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Welcome, I'm Stephen Taylor Witte, and I'm a software developer, architect, full-stack developer, back-end engineer, and sometimes scrum master. 
+I build things for the web, iOS, and Android. Sometimes I work on API's, other times it is an SPA, native app, 
+or micro-service. I also have a degree in music production with a minor in piano and love all types of creative endeavors.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+You can find more of my stuff at
+[steve.taylorwitte.com](https://steve.taylorwitte.com)
