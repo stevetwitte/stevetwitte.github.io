@@ -1,12 +1,17 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<header class="flex justify-around">
-	<h2 class="text-2xl">
-		{SITE_TITLE}
-	</h2>
+<header class="flex justify-between items-end mt-8 pb-4">
+  <span>
+    <h3 class="text-base">
+      {SITE_DESCRIPTION}
+    </h3>
+    <h2 class="text-4xl">
+      {SITE_TITLE}
+    </h2>
+  </span>
 	<nav>
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
