@@ -3,6 +3,12 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
 ---
 
 <!DOCTYPE html>
@@ -10,33 +16,23 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
+
 	<body class="max-w-screen-lg m-auto p-12 font-sans">
-		<Header title={SITE_TITLE} />
+		<Header />
 		<main class="mx-auto mt-4">
-			<h1 class="mb-2 border-b-2 text-base border-slate-300">HOME</h1>
-			<p>
-        A software engineer with extensive experience in web development, including
-        traditional MVC, serverless, SQL, and more. Creative problem solver regardless of the language,
-        with a focus on Ruby, PHP, and Javascript. Creator of programming education,
-        music tech, and open source content, which you can find on my YouTube, Twitter, GitHub, etc...
-			</p>
-      <section class="mt-4">
-        <h2 class="mb-2 border-b-2 text-base border-slate-300">QUICK LINKS</h2>
-        <ul>
-          <li>
-            <a class="text-lg underline" href="https://www.github.com/stevetwitte">github.com/stevetwitte</a>
-          </li>
-          <li>
-            <a class="text-lg underline" href="https://www.linkedin.com/in/stevetwitte">linkedin.com/in/stevetwitte</a>
-          </li>
-          <li>
-            <a class="text-lg underline" href="https://drive.google.com/file/d/1E8jNiwzaaZ34FYF0X69w2GU36FFupCsS/view?usp=sharing">resume-stephen-witte.pdf</a>
-          </li>
-          <li>
-            <a class="text-lg underline" href="mailto:stevetwitte@gmail.com">stevetwitte@gmail.com</a>
-          </li>
-        </ul>
-      </section>
+      <section class="mt-6">
+        <h1 class="mb-4 border-b-2 text-base border-slate-300">LATEST POSTS</h1>
+				<ul>
+					{
+						posts.map((post) => (
+							<li>
+								<FormattedDate date={post.data.pubDate} />
+								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
 		</main>
 		<Footer />
 	</body>
