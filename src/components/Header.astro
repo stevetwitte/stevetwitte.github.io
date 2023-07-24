@@ -1,21 +1,27 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
-<header class="flex justify-between items-end mt-8 pb-4">
+<header
+  class="flex flex-col md:flex-row justify-between items-start md:items-end mt-2 md:mt-8 pb-4"
+>
   <span>
-    <h3 class="text-base">
+    <h3 class="text-base mb-4 md:mb-0">
       {SITE_DESCRIPTION}
     </h3>
-    <h2 class="text-4xl">
+    <h2 class="text-4xl mb-4 md:mb-0">
       {SITE_TITLE}
     </h2>
   </span>
-	<nav>
-		<HeaderLink href="/">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
+  <nav class="flex items-center">
+    <HeaderLink href="/">Blog</HeaderLink>
+    <HeaderLink href="/about">About</HeaderLink>
+    <HeaderLink href="https://twitter.com/stephentwitte" target="_blank">
+      <img class="h-6" src="../../public/square-github.svg" alt="GitHub" />
+    </HeaderLink>
+    <HeaderLink href="https://github.com/stevetwitte" target="_blank">
+      <img class="h-6" src="../../public/square-twitter.svg" alt="Twitter" />
+    </HeaderLink>
+  </nav>
 </header>

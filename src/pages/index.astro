@@ -1,39 +1,42 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
 
-	<body class="max-w-screen-lg m-auto p-12 font-sans">
-		<Header />
-		<main class="mx-auto mt-4">
+  <body class="max-w-screen-lg m-auto p-6 md:p-12 font-sans">
+    <Header />
+    <main class="mx-auto mt-4">
       <section class="mt-6">
         <h1 class="mb-4 border-b-2 text-base border-slate-300">LATEST POSTS</h1>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<FormattedDate date={post.data.pubDate} />
-								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+        <ul>
+          {
+            posts.map((post) => (
+              <a href={`/blog/${post.slug}/`}>
+                <li class="w-full text-left my-8">
+                  <FormattedDate date={post.data.pubDate} />
+                  <h3 class="text-lg">{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                </li>
+              </a>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
